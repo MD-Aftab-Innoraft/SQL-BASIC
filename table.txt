@@ -1,0 +1,46 @@
+CREATE TABLE teams (
+team_id int PRIMARY KEY AUTO_INCREMENT,
+team_name varchar(35) UNIQUE,
+captain varchar(50));
+
+INSERT INTO teams (team_name, captain) VALUES ('Chennai Super Kings','MS Dhoni');
+INSERT INTO teams (team_name, captain) VALUES ('Kings XI Punjab','Adam Gilchrist');
+INSERT INTO teams (team_name, captain) VALUES ('Royal Challengers Bangalore','Virat Kohli');
+INSERT INTO teams (team_name, captain) VALUES ('Rajasthan Royals','Rahul Dravid');
+INSERT INTO teams (team_name, captain) VALUES ('Gujarat Titans','Hardik Pandya');
+INSERT INTO teams (team_name, captain) VALUES ('Mumbai Indians','Rohit Sharma');
+
+
+
+INSERT into teams (team_name, captain) values ('Innoraft XI','MD Kaif');
+INSERT into teams (team_name, captain) values ('Software Trainee','Utkarsh Kr Singh');
+
+
+
+
+CREATE TABLE fixtures (
+match_id INT PRIMARY KEY AUTO_INCREMENT,
+venue varchar(20),
+date DATE,
+team_1 varchar(35) references teams(team_name),
+team_2 varchar(35) references teams(team_name),
+toss_won_by varchar(35) references teams(team_name),
+match_won_by varchar(35) references teams(team_name));
+
+INSERT INTO fixtures
+(venue, date, team_1, team_2, toss_won_by, match_won_by) VALUES
+('Kolkata','2023-03-22', 'Chennai Super Kings', 'Royal Challengers Bangalore', 'Royal Challengers Bangalore', 'Chennai Super Kings');
+
+INSERT INTO fixtures
+(venue, date, team_1, team_2, toss_won_by, match_won_by) VALUES
+('Mumbai','2023-03-23', 'Mumbai Indians', 'Rajasthan Royals', 'Mumbai Indians', 'Mumbai Indians');
+
+INSERT INTO fixtures
+(venue, date, team_1, team_2, toss_won_by, match_won_by) VALUES
+('Mumbai','2023-03-25', 'Rajasthan Royals', 'Gujrat Titans', 'Rajasthan Royals', 'Rajasthan Royals');
+
+
+
+INSERT INTO fixtures
+(venue, date, team_1, team_2, toss_won_by, match_won_by) VALUES
+('Mumbai','2023-03-25', 'Innoraft XI', 'Software Trainee', 'Innoraft XI', 'Software Trainee');

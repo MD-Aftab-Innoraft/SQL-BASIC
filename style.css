@@ -1,0 +1,54 @@
+/* Resetting the borders and margins. */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Styling the HTML body. */
+body {
+  min-height: 100svh;
+  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 39%, #FFCC70 76%);
+  padding: 50px 0px;
+  margin: 0px 15px;
+}
+
+/* Designing a container. */
+.container {
+  max-width: 1300px;
+  margin: auto;
+}
+
+.heroText {
+  font-size: 40px;
+  text-align: center;
+  color: darkblue;
+  text-decoration: double underline;
+  margin: 40px 0px;
+}
+
+/* Stlyling the headings. */
+.heading {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: underline;
+}
+
+/* Styling the display tables and query results(table form).*/
+table {
+  border-collapse: collapse;
+  margin: 50px auto;
+}
+
+/* Stling the table headers and data. */
+th, td {
+  font-size: 18px;
+  border: 1px solid black;
+  padding: 2px 5px;
+  background-color: rgba(255, 255, 255, 0.199);
+}
+
+tr:hover {
+  background-color: rgba(255, 255, 255, 0.4) !important;
+}
