@@ -1,0 +1,12 @@
+Advantages:-
+The fixtures table is independent of the team table thereby migitating the
+use of complex SQL queries for retrieving relevant information. The table shows
+apt and easy to understand data.
+
+Disadvantges
+Redundancy as we are repeating the team names again and again which could have
+been avoided.
+Additionally, the integrity of the data in the fixtures table is dependent on
+the integrity of the data in the teams table. If a team is deleted from the
+teams table, it could potentially leave orphaned references in the fixtures
+table, leading to data inconsistency.
