@@ -6,17 +6,34 @@ require ('./vendor/autoload.php');
 // Requiring the DB Connection file.
 require ('./DbConnect.php');
 
-// Fetching the participating teams.
+// Required queries.
 $query1 = "SELECT * FROM teams";
-$stmt = $conn->query($query1);
-$results = $stmt->fetchAll();
+$query2 = "SELECT * FROM fixtures";
 
-// Fetch all the column names for 'teams' table.
-$columnNames = array();
-$columnCount = $stmt->columnCount();
-for ($i = 0; $i < $columnCount; $i++) {
-  $col = $stmt->getColumnMeta($i);
-  array_push($columnNames,$col['name']);
+/**
+ * Function to execute a sql query and display the result in table form.
+ *
+ * @param string $query
+ *  Query to be executed and showed result of.
+ */
+function createTable(string $query): void {
+  global $conn;
+  // Executing the query.
+  $stmt = $conn->query($query);
+  // Fetching all the rows.
+  $results = $stmt->fetchAll();
+
+  // Fetch all the column names for the table.
+  $columnNames = array();
+  $columnCount = $stmt->columnCount();
+  for ($i = 0; $i < $columnCount; $i++) {
+    $col = $stmt->getColumnMeta($i);
+    // Pushing column names into '$columnNames' array.
+    array_push($columnNames,$col['name']);
+  }
+
+  // Requiring the php file resposible for displaying table.
+  require ('./queryResults.php');
 }
 
 ?>
@@ -35,26 +52,13 @@ for ($i = 0; $i < $columnCount; $i++) {
     <div class="heroText">TATA IPL 2023</div>
     <div class="heading">Participating Teams:</div>
     <!-- Displaying the teams table. -->
-    <?php require ('./queryResults.php') ?>
+    <?php createTable($query1); ?>
 
     <div class="heading">League Fixtures:</div>
     <!-- Displays the fixtures table. -->
-    <?php
-      $query1 = "SELECT * FROM fixtures";
-      $stmt = $conn->query($query1);
-      $results = $stmt->fetchAll();
-
-      // Fetch all the column names for 'fixtures' table.
-      $columnNames = array();
-      $columnCount = $stmt->columnCount();
-      for ($i = 0; $i < $columnCount; $i++) {
-        $col = $stmt->getColumnMeta($i);
-        array_push($columnNames,$col['name']);
-      }
-      // Displaying the
-      require ('./queryResults.php');
-    ?>
+    <?php createTable($query2); ?>
   </div>
+
   <!-- Linking the script files. -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="//cdn.datatables.net/2.0.2/js/dataTables.min.js"></script>
