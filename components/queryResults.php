@@ -1,5 +1,5 @@
 <!-- Displays the query results in the form of table. -->
-<table>
+<table class="myTable">
   <thead>
     <tr>
       <?php

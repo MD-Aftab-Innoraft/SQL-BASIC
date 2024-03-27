@@ -72,22 +72,24 @@ function validateData() {
   let empSalaryErr = document.getElementById('empSalaryErr');
 
   // Regex to validate text inputs.
-  const  nameRegex = /^[a-zA-Z\s]+$/;
-  const codeRegex = /^[a-zA-Z\s_]+$/;
-  const empIdRegex = /^RU[a-zA-Z0-9]{3,}$/;
-  const percentRegex = /^(100(\.0{1,2})?|\d{1,2}(\.\d{1,2})?)$/;
-  const salaryRegex = /^(1\d\d|20|\b1\d|\b[1-9][0-9]?)$/;;
+  const NAMEREGEX = /^[a-zA-Z\s]+$/;
+  const CODEREGEX = /^[a-zA-Z\s_]+$/;
+  const EMPIDREGEXX = /^RU[a-zA-Z0-9]{3,}$/;
+  const PERCENTREGEX = /^(100(\.0{1,2})?|\d{1,2}(\.\d{1,2})?)$/;
+  const SALARYREGEX = /^(1\d\d|20|\b1\d|\b[1-9][0-9]?)$/;;
 
   // Updating the error messages for the input fields.
-  fnameErr.innerHTML = checkInput(fname,  nameRegex,"First name", 25, 1);
-  lnameErr.innerHTML = checkInput(lname,  nameRegex, "Last name", 25, 1);
-  gradPercentErr.innerHTML = checkInput(gradPercent, percentRegex, "Graduation Percentile", 100, 1);
-  empIdErr.innerHTML = checkInput(empId, empIdRegex, "Employee ID", 10, 5);
-  empCodeErr.innerHTML = checkInput(empCode, codeRegex, "Employee Code", 25, 1);
-  empCodeNameErr.innerHTML = checkInput(empCodeName, codeRegex, "Employee Code Name", 25, 1);
-  empDomainErr.innerHTML = checkInput(empDomain,  nameRegex, "Employee Domain", 20);
-  empSalaryErr.innerHTML = checkInput(empSalary, salaryRegex, "Salary", 5, 1);
+  fnameErr.innerHTML = checkInput(fname, NAMEREGEX,"First name", 25, 1);
+  lnameErr.innerHTML = checkInput(lname, NAMEREGEX, "Last name", 25, 1);
+  gradPercentErr.innerHTML = checkInput(gradPercent, PERCENTREGEX, "Graduation Percentile", 100, 1);
+  empIdErr.innerHTML = checkInput(empId, EMPIDREGEXX, "Employee ID", 10, 5);
+  empCodeErr.innerHTML = checkInput(empCode, CODEREGEX, "Employee Code", 25, 1);
+  empCodeNameErr.innerHTML = checkInput(empCodeName, CODEREGEX, "Employee Code Name", 25, 1);
+  empDomainErr.innerHTML = checkInput(empDomain, NAMEREGEX, "Employee Domain", 20);
+  empSalaryErr.innerHTML = checkInput(empSalary, SALARYREGEX, "Salary", 5, 1);
 
   // Returns whether all the inputs fields are properly filled.
-  return errorFree;;
+  return false;
+  return errorFree;
+
 }

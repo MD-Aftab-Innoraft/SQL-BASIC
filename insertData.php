@@ -1,7 +1,7 @@
 <?php
 
 // Requiring db connection file.
-require 'DbConnect.php';
+require ('DbConnect.php');
 
 // When the form is submitted using POST method.
 if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -26,14 +26,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                  (employee_id, employee_salary, employee_code)
                  VALUES (?, ?, ?)";
   $stmt2 = $conn->prepare($insertQuery);
-  $stmt2->execute([$empId, $empSalary, $empCode]);
+  $stmt2->execute([$empId, ($empSalary . "k"), $empCode]);
 
   // Inserting data into employee_details_table.
   $insertQuery = "INSERT INTO employee_details_table
                  (employee_id, employee_first_name, employee_last_name, Graduation_percentile)
                  VALUES (?, ?, ?, ?)";
   $stmt3 = $conn->prepare($insertQuery);
-  $stmt3->execute([$empId, $fname, $lname, $gradPercent]);
+  $stmt3->execute([$empId, $fname, $lname, ($gradPercent . "%")]);
 }
 
 ?>
@@ -44,7 +44,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Insert Data</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./CSS/style.css">
 </head>
 <body>
   <div class="container">
@@ -57,7 +57,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php } ?>
 
     <div class="heading">Insert Employee Data:</div>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>"
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"
     method="POST" onsubmit="return validateData();">
 
     <!-- Input for first name and display related errors. -->
@@ -105,6 +105,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   </form>
   </div>
   <!-- Linking the javascript file for the page. -->
-  <script src="script.js"></script>
+  <script src="./JS/script.js"></script>
 </body>
 </html>
